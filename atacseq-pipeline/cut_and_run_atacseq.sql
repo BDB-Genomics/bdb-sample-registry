@@ -1,10 +1,4 @@
 CREATE TABLE cut_and_run_sample_metadata_table (
-	sample_id TEXT PRIMARY KEY,
-	replicate INT NOT NULL,
-	condition TEXT NOT NULL,
-	fastq_r1 TEXT NOT NULL,
-	fastq_r2 TEXT NOT NULL,
-	control_sample_id TEXT  NULL,
 	genome_assembly VARCHAR(20) DEFAULT 'hg38',
         pipeline_version VARCHAR(20) NOT NULL,
 	run_date DATE NOT NULL, 
@@ -23,5 +17,6 @@ CREATE TABLE cut_and_run_sample_metadata_table (
 	qc_estimated_fragment_length INT CHECK (qc_estimated_fragment_length > 0),
 	qc_library_complexity FLOAT CHECK (qc_library_complexity BETWEEN 0 AND 1),
 	qc_total_peaks_called BIGINT CHECK (qc_total_peaks_called >= 0),
-	qc_peaks_after_blacklist_filter BIGINT CHECK (qc_peaks_after_blacklist_filter >= 0)
-);
+	qc_peaks_after_blacklist_filter BIGINT CHECK (qc_peaks_after_blacklist_filter >= 0),
+        FOREIGN KEY (sample_id) REFERENCES sample_sheet_metadata(sample_id)
+      );
