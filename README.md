@@ -4,7 +4,7 @@
 <div> 
   <p> 
     <mark> 
-      <break>BDB Sample Registry does not filter samples using biological cutoffs; it stores all samples and records QC metrics without exclusion.
+      <break>Note: BDB Sample Registry does not filter samples using biological cutoffs; it stores all samples and records QC metrics without exclusion.
       </break>
     </mark> 
   </p>
