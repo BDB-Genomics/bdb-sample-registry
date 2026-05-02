@@ -1,10 +1,4 @@
 CREATE TABLE atacseq_sample_table (
-	sample_id TEXT PRIMARY KEY,
-	replicate INT NOT NULL CHECK (replicate > 0),
-	condition TEXT NOT NULL,
-	control_sample_id TEXT NOT NULL,
-	fastq_r1 TEXT NOT NULL,
-	fastq_r2 TEXT NOT NULL,
 	genome_assembly VARCHAR(20) NOT NULL DEFAULT 'hg38',
 	pipeline_version VARCHAR(20) NOT NULL,
 	run_date DATE NOT NULL,
@@ -17,7 +11,8 @@ CREATE TABLE atacseq_sample_table (
 	qc_total_peaks_called INT NOT NULL CHECK (qc_total_peaks_called >= 0),
 	qc_duplicate_rate FLOAT NOT NULL CHECK (qc_duplicate_rate BETWEEN 0 AND 1),
 	qc_mapped_reads BIGINT NOT NULL CHECK (qc_mapped_reads >= 0),
-	qc_fragment_size_median FLOAT NOT NULL CHECK (qc_fragment_size_median > 0)
+	qc_fragment_size_median FLOAT NOT NULL CHECK (qc_fragment_size_median > 0),
+        FOREIGN KEY (sample_id) REFERENCES sample_sheet_metadata(sample_id)
 );
 	
 	  
