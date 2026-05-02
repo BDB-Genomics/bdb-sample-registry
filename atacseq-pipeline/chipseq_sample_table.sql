@@ -1,9 +1,4 @@
 CREATE TABLE chipseq_sample_table (
-	sample_id TEXT PRIMARY KEY,
-	replicate INT NOT NULL,
-	condition TEXT NOT NULL,
-	fastq_r1 TEXT NOT NULL,
-	fastq_r2 TEXT NOT NULL
 	genome_assembly VARCHAR(20) DEFAULT 'hg38',
 	spikein_genome VARCHAR(20)  DEFAULT 'ecoli',
 	pipeline_version VARCHAR(20) NOT NULL ,
@@ -15,5 +10,7 @@ CREATE TABLE chipseq_sample_table (
 	qc_fragment_size_median FLOAT CHECK (qc_fragment_size_median > 0),
 	qc_library_complexity FLOAT CHECK (qc_library_complexity BETWEEN 0 AND 1), 
 	qc_spikein_scaling_called FLOAT CHECK (qc_spiking_scaling_called > 0), 
-	qc_total_peaks_called BIGNIT CHECK (qc_total_peaks_called >= 0) 
+	qc_total_peaks_called BIGNIT CHECK (qc_total_peaks_called >= 0),
+        FOREIGN KEY (sample_id) REFERENCES sample_sheet_metadata(sample_id)
+); 
 
