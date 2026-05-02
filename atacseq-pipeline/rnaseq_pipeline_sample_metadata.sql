@@ -1,42 +1,24 @@
 CREATE TABLE rnaseq_sample_table (
-
-    sample_id TEXT PRIMARY KEY,
-    replicate INT NOT NULL CHECK (replicate > 0),
-    condition TEXT NOT NULL,
-    fastq_r1 TEXT NOT NULL,
-    fastq_r2 TEXT NOT NULL,
-    control_sample_id TEXT NULL,
-
     genome_assembly VARCHAR(20) DEFAULT 'hg38',
     pipeline_version VARCHAR(20) NOT NULL,
     run_date DATE NOT NULL,
     star_sjdb_overhang INT DEFAULT 100,
-
     qc_status VARCHAR(10) CHECK (qc_status IN ('pass','fail')),
-
     qc_mapped_reads BIGINT CHECK (qc_mapped_reads >= 0),
     qc_alignment_rate FLOAT CHECK (qc_alignment_rate BETWEEN 0 AND 100),
-
     qc_duplicate_rate FLOAT CHECK (qc_duplicate_rate BETWEEN 0 AND 100),
     qc_median_insert_size FLOAT CHECK (qc_median_insert_size > 0),
-
     qc_library_complexity FLOAT CHECK (qc_library_complexity BETWEEN 0 AND 1),
-
     qc_assigned_reads BIGINT CHECK (qc_assigned_reads >= 0),
     qc_assignment_rate FLOAT CHECK (qc_assignment_rate BETWEEN 0 AND 100),
-
     qc_exonic_rate FLOAT CHECK (qc_exonic_rate BETWEEN 0 AND 100),
     qc_intronic_rate FLOAT CHECK (qc_intronic_rate BETWEEN 0 AND 100),
     qc_intergenic_rate FLOAT CHECK (qc_intergenic_rate BETWEEN 0 AND 100),
-
     qc_rrna_percent FLOAT CHECK (qc_rrna_percent BETWEEN 0 AND 100),
     qc_gene_body_3prime_bias FLOAT CHECK (qc_gene_body_3prime_bias >= 0),
-
-    qc_strand_specificity VARCHAR(20)
-        CHECK (qc_strand_specificity IN ('forward','reverse','unstranded')),
-
+    qc_strand_specificity VARCHAR(20) CHECK (qc_strand_specificity IN ('forward','reverse','unstranded')),
     qc_junction_reads BIGINT CHECK (qc_junction_reads >= 0),
     qc_junction_annotation_rate FLOAT CHECK (qc_junction_annotation_rate BETWEEN 0 AND 100),
-    qc_gc_bias FLOAT CHECK (qc_gc_bias >= 0)
-
+    qc_gc_bias FLOAT CHECK (qc_gc_bias >= 0),
+    FOREIGN KEY (sample_id) REFERENCE sample_sheet_metadata(sample_id)
 );
