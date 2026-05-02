@@ -1,4 +1,5 @@
-<img width="1774" height="887" alt="ChatGPT Image May 2, 2026, 11_20_24 PM" src="https://github.com/user-attachments/assets/8260e727-1d17-4f73-bf99-4e5b4e9198d2" />
+<img width="1536" height="1024" alt="ChatGPT Image May 2, 2026, 11_34_38 PM" src="https://github.com/user-attachments/assets/bc7f287c-b775-4293-a89e-432f68d6cc3f" />
+
 
 <div> 
   <p> 
@@ -8,6 +9,7 @@
 </div>
 
 <div>
-  <p> Build and Maintained by Himanshu Bhandary, BDB Genomics
+  <p> 
+    <I>Build and Maintained by Himanshu Bhandary, BDB Genomics.</I>
   </p>
 </div>
