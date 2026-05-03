@@ -1,0 +1,8 @@
+name: atacseq_pipeline
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.10.14
+  - psycopg2=2.9.9
