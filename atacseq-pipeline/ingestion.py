@@ -343,11 +343,3 @@ def sample_sheet_metadata(conn, sample):
     except Exception:
         conn.rollback()
         raise
-ple_id}': {e}")
-                    raise
-
-        conn.commit()
-        print("Sample sheet metadata populated.")
-    except Exception:
-        conn.rollback()
-        raise

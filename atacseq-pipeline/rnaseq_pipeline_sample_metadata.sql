@@ -1,4 +1,5 @@
 CREATE TABLE rnaseq_sample_table (
+    sample_id TEXT PRIMARY KEY,
     genome_assembly VARCHAR(20) DEFAULT 'hg38',
     pipeline_version VARCHAR(20) NOT NULL,
     run_date DATE NOT NULL,
@@ -20,5 +21,5 @@ CREATE TABLE rnaseq_sample_table (
     qc_junction_reads BIGINT CHECK (qc_junction_reads >= 0),
     qc_junction_annotation_rate FLOAT CHECK (qc_junction_annotation_rate BETWEEN 0 AND 100),
     qc_gc_bias FLOAT CHECK (qc_gc_bias >= 0),
-    FOREIGN KEY (sample_id) REFERENCE sample_sheet_metadata(sample_id)
+    FOREIGN KEY (sample_id) REFERENCES sample_sheet_metadata(sample_id)
 );
